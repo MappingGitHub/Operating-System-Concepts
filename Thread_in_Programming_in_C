@@ -1,0 +1,39 @@
+//Using_Thread_in_Programming_in_C
+//to run this program in the terminal use the following command
+// gcc thread.c lpthread and then ./a.out
+
+/*
+A thread is a single sequence stream within in a process. 
+Because threads have some of the properties of processes, 
+they are sometimes called lightweight processes. Threads 
+are popular way to improve application through parallelism. 
+
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <pthread.h>
+
+ 
+void *func(void *var){
+ 
+sleep(2);
+printf("We are using thread\n");
+return NULL;
+
+}
+
+int main(){
+
+     //creating simple variable 
+       pthread_t t_id;
+       printf("Before using threading.\n");
+       //creating and forming pthread
+       pthread_create(&t_id,NULL,func,NULL);
+       pthread_join(t_id,NULL);
+
+       printf("After Thread \n");
+
+       exit(0);
+
+}
